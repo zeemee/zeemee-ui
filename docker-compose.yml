@@ -1,19 +1,23 @@
 services:
   web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bin/rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bin/rails s -p 3001 -b '0.0.0.0'"
     volumes:
       - .:/usr/src/app
       - bundle:/usr/local/bundle
     ports:
-      - "3000:3000"
+      - "3001:3001"
     env_file:
       - .env
     environment:
-      - HISTFILE=/usr/src/app/log/.bash_history 
+      - HISTFILE=/usr/src/app/log/.bash_history
     depends_on:
       - db
       - redis
+# TODO: this is for using binding.break - need to check if this is ok in prod
+# from https://medium.com/gogox-technology/debugging-rails-app-with-docker-compose-39a3767962f4
+    stdin_open: true
+    tty: true
   db:
     image: postgres:14
     ports:

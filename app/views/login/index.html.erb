@@ -1,0 +1,11 @@
+<h1>ZeeMee Login</h1>
+
+<%= form_with do |form| %>
+  <%= form.label :phone, 'Phone:' %>
+  <%= form.text_field :phone %>
+  <%= form.submit 'Send code' %>
+<% end %>
+
+<%= debug(@res) %>
+
+<%= debug(@bob) %>

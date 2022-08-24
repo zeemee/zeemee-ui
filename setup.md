@@ -14,5 +14,24 @@ docker compose run --rm web bin/rails db:setup
 docker compose up
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3001](http://localhost:3001)
 
+All code assumes you're running the main ZeeMee project on `localhost:3000` right now
+
+## Debugging
+
+Rails 7 using `binding.break` but it's a bit involved in Docker
+
+1. `docker compose up`
+2. open another terminal window
+3. find container id with `docker container ls` and get the id for `zeemee-ui`
+4. then attach: `docker attach {id}`
+5. then you can hit `binding.break`
+
+Note: You can do this in the same window with detached: `docker compose up -d` ... then - when you want to kill the server `docket compose down`
+
+TODO: Write helper scripts for this garbage
+
+## Misc Notes
+
+* originally based on this project: [https://github.com/ryanwi/rails7-on-docker](https://github.com/ryanwi/rails7-on-docker)
