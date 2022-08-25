@@ -18,6 +18,12 @@ Open [http://localhost:3001](http://localhost:3001)
 
 All code assumes you're running the main ZeeMee project on `localhost:3000` right now
 
+## Console
+
+```
+docker-compose exec web rails console
+```
+
 ## Debugging
 
 Rails 7 using `binding.break` but it's a bit involved in Docker

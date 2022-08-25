@@ -2,10 +2,11 @@
 
 <%= form_with do |form| %>
   <%= form.label :phone, 'Phone:' %>
-  <%= form.text_field :phone %>
-  <%= form.submit 'Send code' %>
+  <%= form.text_field :phone, value: @phone %>
+  <% if @phone %>
+    <%= form.text_field :code %>
+    <%= form.submit 'Validate Code' %>
+  <% else %>
+    <%= form.submit 'Send code' %>
+  <% end %>
 <% end %>
-
-<%= debug(@res) %>
-
-<%= debug(@bob) %>
