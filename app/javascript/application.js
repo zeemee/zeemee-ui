@@ -4,4 +4,14 @@ import "controllers"
 import "trix"
 import "@rails/actiontext"
 
-console.log('Hello World from application.js');
+// Other imports...
+import jquery from "jquery"
+import "foundation-sites"
+
+window.jQuery = jquery
+window.$ = jquery
+
+$(function() {
+  $(document).foundation();
+})
+

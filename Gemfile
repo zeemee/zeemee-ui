@@ -45,7 +45,7 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails", "~> 2.1"
+gem "sassc-rails", "~> 2.1"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.12"
@@ -53,6 +53,10 @@ gem "image_processing", "~> 1.12"
 gem "brakeman"
 gem "bundler-audit"
 gem "rubocop-rails"
+
+# For installing zurb-foundation
+# https://webology.hashnode.dev/foundation-rails-7-tutorial
+gem 'cssbundling-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
