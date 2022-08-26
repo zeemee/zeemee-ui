@@ -38,6 +38,23 @@ Note: You can do this in the same window with detached: `docker compose up -d` .
 
 TODO: Write helper scripts for this garbage
 
+# Bash helpers
+
+Put this in your `~/.zshrc` (or whatever you're using) then do a `source ~/.zshrc` to reload
+
+```
+# DOCKER
+
+# attaches to the current running web instance for debugging
+ddebug() {
+  docker attach $(docker container ls | grep 'zeemee-ui_web' | grep -Eo '^[^ ]+')
+}
+# rails c
+alias dcon='docker-compose exec web rails console'
+# rails s
+alias dup='docker-compose up'
+```
+
 ## Misc Notes
 
 * originally based on this project: [https://github.com/ryanwi/rails7-on-docker](https://github.com/ryanwi/rails7-on-docker)

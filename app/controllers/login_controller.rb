@@ -12,12 +12,24 @@ class LoginController < ApplicationController
       if login_params['phone'] && login_params['code']
         res = ls.validate_code(login_params['code'])
         puts '', '-' * 80, res, '-' * 80, ''
-        res.code == '200' ? '/' : login_index_path(p)
+        if res.code == '200'
+          # this contains most user fields like:
+          # name, phone_number, authentication_token, etc
+          session[:current_user] = JSON.parse(res.body)
+          '/'
+        else
+          login_index_path(p)
+        end
       else
         res = ls.login
         res.code == '200' ? login_index_path(p) : login_index_path
       end
     redirect_to url
+  end
+
+  def logout
+    session[:current_user] = nil
+    redirect_to login_index_path
   end
 
   private

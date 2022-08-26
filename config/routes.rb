@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :login
+  get '/login', to: 'login#index'
+  get '/logout', to: 'login#logout'
 
   resources :articles do
     resources :comments
