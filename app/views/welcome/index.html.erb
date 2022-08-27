@@ -9,6 +9,8 @@
       <% else %>
         <li><%= link_to 'Login', login_index_path %></li>
       <% end %>
+      <li>User Count: <%= User.count %></li>
+      <li>Current DB: <%= DbUtils.db_name %></li>
       <li>Dashboard</li>
       <li>Events</li>
       <li>Discover</li>
@@ -18,6 +20,10 @@
       <li>Privacy</li>
       <li>Terms of Use</li>
       <li>Copyright Dispute Policy</li>
+      <li>Add spec examples</li>
+      <li>Deploy to AWS</li>
+      <li>Add GQL example</li>
+      <li>Add zeemee-layouts</li>
     </ul>
   </div>
   <div class="cell small-3">&nbsp;</div>

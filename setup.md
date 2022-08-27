@@ -53,6 +53,8 @@ ddebug() {
 alias dcon='docker-compose exec web rails console'
 # rails s
 alias dup='docker-compose up'
+# rebuild docker container
+alias dbuild='docker compose build'
 ```
 
 ## Misc Notes
