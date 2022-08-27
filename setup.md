@@ -44,16 +44,24 @@ Put this in your `~/.zshrc` (or whatever you're using) then do a `source ~/.zshr
 
 ```
 # DOCKER
-
-# attaches to the current running web instance for debugging
+# attaches to current docker web for console debugging
 ddebug() {
   docker attach $(docker container ls | grep 'zeemee-ui_web' | grep -Eo '^[^ ]+')
 }
+# edit credentials.yml file
+# TODO: there's got to be a faster way to do this
+dcred() {
+  docker run --rm -it --mount type=bind,src=${PWD},target=/usr/src/app \
+  zeemee-ui_web /bin/sh -c \
+  'apt update && apt install -y vim && EDITOR=vim bin/rails credentials:edit'
+}
+# rails base
+alias drails='docker-compose exec web rails'
 # rails c
-alias dcon='docker-compose exec web rails console'
+alias dcon='drails console'
 # rails s
 alias dup='docker-compose up'
-# rebuild docker container
+# rebuild container
 alias dbuild='docker compose build'
 ```
 

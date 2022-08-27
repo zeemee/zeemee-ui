@@ -1,16 +1,17 @@
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  # host: db
-  # username: postgres
-  # password:
-  pool: <%= ENV['MAX_THREADS'] || 5 %>
-
+# To edit credentials
+# 1) get master.key file from someone
+# 2) put in config/master.key
+# 3) run dcred (should be ~/.zschrc)
+# dred =
+#   docker run --rm -it --mount type=bind,src=${PWD},target=/usr/src/app \
+#   zeemee-ui_web /bin/sh -c \
+#   'apt update && apt install -y vim && EDITOR=vim bin/rails credentials:edit'
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: zeemee_staging
-  username: zeemee_admin
-  password: FUA3p654h9D79Sb
-  host: stage-rails.cly0cxysh0so.us-east-1.rds.amazonaws.com
-  port: 5432
+  adapter: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_adapter) %>
+  encoding: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_encoding) %>
+  database: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_database) %>
+  username: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_username) %>
+  password: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_password) %>
+  host: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_host) %>
+  port: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_port) %>
+  pool: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_pool) %>
