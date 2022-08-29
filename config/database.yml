@@ -6,12 +6,17 @@
 #   docker run --rm -it --mount type=bind,src=${PWD},target=/usr/src/app \
 #   zeemee-ui_web /bin/sh -c \
 #   'apt update && apt install -y vim && EDITOR=vim bin/rails credentials:edit'
+<%
+  def config(field)
+    Rails.application.credentials.dig(Rails.env.to_sym, field)
+  end
+%>
 development:
-  adapter: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_adapter) %>
-  encoding: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_encoding) %>
-  database: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_database) %>
-  username: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_username) %>
-  password: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_password) %>
-  host: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_host) %>
-  port: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_port) %>
-  pool: <%= Rails.application.credentials.dig(Rails.env.to_sym, :db_pool) %>
+  adapter: <%= config(:db_adapter) %>
+  encoding: <%= config(:db_encoding) %>
+  database: <%= config(:db_database) %>
+  username: <%= config(:db_username) %>
+  password: <%= config(:db_password) %>
+  host: <%= config(:db_host) %>
+  port: <%= config(:db_port) %>
+  pool: <%= config(:db_pool) %>
