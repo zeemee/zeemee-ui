@@ -36,7 +36,9 @@ Rails 7 using `binding.break` but it's a bit involved in Docker
 
 Note: You can do this in the same window with detached: `docker compose up -d` ... then - when you want to kill the server `docket compose down`
 
-TODO: Write helper scripts for this garbage
+# ENV/Configuration
+
+Rails > 4 introduced an encrypted config file. To use this you need `config/master.key` ... you can just create this file and and copy/paste the value from `Heroku -> Settings -> Config Vars -> RAILS_MASTER_KEY` 
 
 # Bash helpers
 
@@ -63,6 +65,24 @@ alias dcon='drails console'
 alias dup='docker-compose up'
 # rebuild container
 alias dbuild='docker compose build'
+# deploy
+alias zui-stg-deploy=git push heroku master -a zui-stg
+alias zui-prod-deploy=git push heroku master -a zui-prod
+```
+
+## Deploy
+
+Setup:
+
+```
+heroku git:remote -a zui-stg
+heroku git:remote -a zui-prod
+```
+
+Deploy:
+
+```
+zui-(stg/prod)-deploy
 ```
 
 ## Misc Notes

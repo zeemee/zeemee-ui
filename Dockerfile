@@ -6,7 +6,6 @@ RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
     less \
     git \
     libpq-dev \
-    postgresql-client \
     libvips42 \
     curl \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

@@ -11,7 +11,7 @@
     Rails.application.credentials.dig(Rails.env.to_sym, field)
   end
 %>
-development:
+default: &default
   adapter: <%= config(:db_adapter) %>
   encoding: <%= config(:db_encoding) %>
   database: <%= config(:db_database) %>
@@ -20,3 +20,12 @@ development:
   host: <%= config(:db_host) %>
   port: <%= config(:db_port) %>
   pool: <%= config(:db_pool) %>
+
+development:
+  <<: *default
+
+staging:
+  <<: *default
+
+production:
+  <<: *default
