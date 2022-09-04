@@ -57,6 +57,10 @@ dcred() {
   zeemee-ui_web /bin/sh -c \
   'apt update && apt install -y vim && EDITOR=vim bin/rails credentials:edit'
 }
+# bash shell for checking local file system, etc
+dcbash() {
+  docker exec -it $(docker container ls | grep 'zeemee-ui_web' | grep -Eo '^[^ ]+') /bin/bash
+}
 # rails base
 alias drails='docker-compose exec web rails'
 # rails c
@@ -87,4 +91,5 @@ zui-(stg/prod)-deploy
 
 ## Misc Notes
 
+* speed up https://www.bigbinary.com/blog/speeding-up-docker-image-build-process-of-a-rails-application
 * originally based on this project: [https://github.com/ryanwi/rails7-on-docker](https://github.com/ryanwi/rails7-on-docker)
